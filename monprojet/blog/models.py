@@ -3,7 +3,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 # Create your models here.
 
 
-# DRF
+# DRF, Django rest Framework
 class CustomUser3(AbstractUser):  
     email = models.EmailField(unique=True)  # Email obligatoire et unique
     is_verified = models.BooleanField(default=False)  # Vérification de l'utilisateur
