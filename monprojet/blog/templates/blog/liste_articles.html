@@ -1,0 +1,45 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+ 
+
+    <div class="container mt-4">
+       
+        <h2>Liste des Articles</h2>
+        <a href="{% url 'create_article_id' id_lib %}" class="btn btn-primary mb-3">Créer un Article</a>
+        <a href="{% url 'HTML_To_PDF' id_lib%}" class="btn btn-primary mb-3">Générer PDF</a>
+    
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Date de publication</th>
+                    <th>pdf</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for article in articles %}
+                <tr>
+                    <td>{{ article.titre }}</td>
+                    <td>{{ article.date_publication }}</td>
+                   
+                    <td> <a href="{% url 'afficher_pdf' article.id %}" download class="btn btn-success btn-sm">
+                        Télécharger PDF
+                    </a></td>
+                    <td>
+                        <a href="{% url 'update_article' article.id %}" class="btn btn-warning btn-sm">Modifier</a>
+                        <a href="{% url 'delete_article' article.id id_lib%}" class="btn btn-danger btn-sm">Supprimer</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3" class="text-center">Aucun article disponible.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+
+

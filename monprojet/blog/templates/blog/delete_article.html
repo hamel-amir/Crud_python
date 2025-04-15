@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+
+
+    <div class="container mt-4">
+        <h2>Supprimer l'article</h2>
+        <p>Es-tu sûr de vouloir supprimer "<strong>{{ article.titre }}</strong>" ?</p>
+        
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Oui, supprimer</button>
+            <a href="{% url 'liste_articles' %}" class="btn btn-secondary">Annuler</a>
+        </form>
+    </div>
+ 
+
+<style>
+    .form-group {
+        margin-bottom: 15px;
+    }
+    label {
+        font-weight: bold;
+    }
+</style>
+{% endblock %}

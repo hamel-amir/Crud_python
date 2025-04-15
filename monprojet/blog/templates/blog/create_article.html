@@ -1,0 +1,34 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+ 
+<div class="container mt-4">
+    <h2>create Article</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="hidden" id="id_lib" name="id_lib" class="form-control" value={{id_lib}} required>
+        <div class="form-group">
+            <label for="titre">Titre :</label>
+            <input type="text" id="titre" name="titre" class="form-control" value="" required>
+        </div>
+        <div class="form-group">
+            <label for="contenu">Contenu :</label>
+            <textarea id="contenu" name="contenu" class="form-control" rows="5" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="contenu">upload pdf :</label>
+            <input id="pdf" name="pdf" class="form-control" rows="5" type="file">
+        </div>
+        <button type="submit" class="btn btn-success mt-3">Enregistrer</button>
+        <a href="{% url 'liste_articles' id_lib %}" class="btn btn-secondary mt-3">Annuler</a>
+    </form>
+</div>
+
+<style>
+    .form-group {
+        margin-bottom: 15px;
+    }
+    label {
+        font-weight: bold;
+    }
+</style>
+{% endblock %}

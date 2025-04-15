@@ -1,0 +1,42 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+ 
+
+    <div class="container mt-4">
+       
+        <h2>Liste des bibliotheques</h2>
+        <a href="{% url 'create_bib' %}" class="btn btn-primary mb-3">Ajouter une bibliotheque</a>
+    
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>id</th>
+                    
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for  bib in libes %}
+                <tr>
+                    <td>{{ bib.Name }}</td>
+                    <td>{{ bib.id_lib }}</td>
+                   
+                   
+                    <td> <a href="{% url 'liste_articles' bib.id_lib %}" class="btn btn-warning btn-sm">
+                          Articles
+                    </a></td>
+                    
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="3" class="text-center">Aucune bibliotheque disponible.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
+
+
+
