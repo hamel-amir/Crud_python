@@ -7,7 +7,6 @@ class ArticleSerializer(serializers.ModelSerializer):
         model = Article
         fields = '__all__'
 
-
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser3
